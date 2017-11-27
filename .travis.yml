@@ -15,7 +15,6 @@ before_install:
 - sfdx update
 - sfdx --version
 - sfdx plugins --core
-- "$echo ."
 - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY -f ./assets/server.key --username
   $USERNAME --setdefaultdevhubusername -a HubOrg
 script:
