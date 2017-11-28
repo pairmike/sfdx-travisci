@@ -7,12 +7,15 @@ env:
   global:
     secure: HcDOGBsvE8EvHlN1pNdVlEMmhhEnbtq65REwaVWXxTOJERAe6DNcSNFIueEp8vBfSVd9O5hHx9Bx8GECHgoGqN1DmF1pYetBd+FrPFQisW4AAAH4fkEWoKhMG0q9x6LXOAiReel08RLccoPEP7zboPmF/sxogEsQzjF+KkxG7Jl8cZW666Aoi/EWAQKIQ6FmA70TXb5R80gkmO6w9RD+z3koRWgZOeSEGqW5HhrWKvLWGYtzpxQyreIYNq7H9K4zAQLUiOUw+AmklaeHjxdTs5O7SZgIjY7rwfo5aMMORngwbU3IyN7tYCQtsls4p8PYaZIC7Kc5yUCVzlZdDDIcJp3Gdq54RNYqnajM9dCyKhWgvbyZgM+mTY0GNz/+/zS0FVwe4Dv4EuF2iVDU1ohkvOMmz+h1xnUBiS3a5bRaBSlKmnBI3AcxfRP79kNym1aC8hAJW+fBuRHQIr3Oi9ESaiXjQl5+90fL/hzP2eNAi+06alZZ9biCgFaq2F4sq22tHiM9V16mGvoDoqh4Ya7g7jRIAOeMCwFIENKIokT9dq2fJm7H37bx7v0gFnH3U8mmkbF8fNoVUgM7H42Jm+0XIFm49BSlRfVTzeZOyDiqe1DRuUFk2ifRFilB8mGESCsQR6EeLyzABjX35qcbji3DpF6sIt8om1OTDwjwzlBXBHE=
 before_install:
-- openssl aes-256-cbc -k "ahduQu9ushou0Roh!" -in super_secret.txt.enc -out super_secret.txt -d   
+- openssl aes-256-cbc -K $encrypted_45dfe12bd6cd_key -iv $encrypted_45dfe12bd6cd_iv
+  -in assets/server.key.enc -out assets/server.key -d
+- openssl aes-256-cbc -k "ahduQu9ushou0Roh!" -in super_secret.txt.enc -out super_secret.txt
+  -d
 - export SFDX_AUTOUPDATE_DISABLE=true
 - export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
 - export SFDX_DOMAIN_RETRY=300
 - wget -qO- $URL | tar xJf -
-- "./sfdx/install"
+- ./sfdx/install
 - export PATH=./sfdx/$(pwd):$PATH
 - sfdx update
 - sfdx --version
