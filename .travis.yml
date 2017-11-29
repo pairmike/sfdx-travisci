@@ -17,7 +17,6 @@ before_install:
 - sfdx --version
 - sfdx plugins --core
 - $echo pwd
-- $echo .
 - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile /Users/mike/sfdx-travisci/assets/server.key
   --username $USERNAME --setdefaultdevhubusername -a HubOrg
 script:
