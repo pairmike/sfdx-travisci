@@ -17,7 +17,6 @@ env:
 - sfdx update
 - sfdx --version
 - sfdx plugins --core
-
 - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --username $USERNAME --setdefaultdevhubusername -a HubOrg
 
   script:
