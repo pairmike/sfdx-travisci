@@ -5,7 +5,7 @@ env:
   matrix:
   - URL=https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
 
-  before_install:
+before_install:
 - openssl aes-256-cbc -K $encrypted_45dfe12bd6cd_key -iv $encrypted_45dfe12bd6cd_iv
   -in server.key.enc -out server.key -d
 - export SFDX_AUTOUPDATE_DISABLE=true
@@ -19,7 +19,7 @@ env:
 - sfdx plugins --core
 - sfdx force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile $JWTKEYFILE --username $USERNAME --setdefaultdevhubusername -a HubOrg
 
-  script:
+script:
 - sfdx force:org:create -v HubOrg -s -f config/project-scratch-def.json -a ciorg
 - sfdx force:source:push -u ciorg
 - sfdx force:apex:test:run -u ciorg -c -r human
